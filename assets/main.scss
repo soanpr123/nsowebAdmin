@@ -1,0 +1,238 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    word-break: break-word !important;
+}
+
+body {
+    @apply text-base text-gray-100 #{!important};
+}
+
+.app {
+    min-height: 100vh;
+}
+
+a {
+    color: inherit !important;
+}
+
+.fade-enter-active, .fade-leave-active {
+    opacity: 1;
+    animation: acrossIn .15s ease-out both, opacity .15s;
+}
+
+.fade-enter, .fade-leave-active {
+    opacity: 0;
+    transition: opacity 0.15s linear;
+}
+
+@keyframes acrossIn {
+    0% {
+        transform: translate3d(-5%, 0, 0);
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.shadow-light {
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.inject-html {
+    table {
+        td {
+            @apply border border-gray-20;
+        }
+    }
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 3px;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #CCCECC;
+}
+
+
+.hidden-scrollbar::-webkit-scrollbar {
+    display: none !important;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hidden-scrollbar {
+  -ms-overflow-style: none !important;  /* IE and Edge */
+  scrollbar-width: none !important;  /* Firefox */
+}
+
+.print-input {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-variant: tabular-nums;
+    list-style: none;
+    font-feature-settings: 'tnum';
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 30px;
+    padding: 4px 11px;
+    font-size: 14px;
+    line-height: 1.9;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+.print-dialog {
+    .ant-form-item {
+        @apply mb-0;
+        &-label {
+            @apply leading-6 #{!important};
+            label {
+                @apply text-gray-80 #{!important};
+            }
+        }
+    }
+
+    .checkbox {
+        @apply w-[18px] h-[18px] border inline-block;
+    }
+
+    /* This is what simulates a checkmark icon */
+    .checkbox.checked:after {
+        content: '';
+        @apply block w-[4px] h-[7px] relative top-[3px] left-[5px] border;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+    }
+
+    * {
+        @apply text-xs;
+    }
+
+    .ant-table {
+        &-column-title {
+            @apply text-2xs #{!important};
+        }
+        td {
+            @apply text-xs #{!important};
+        }
+    }
+}
+
+@media print {
+    @page { 
+        margin: 24px 36px !important;
+        overflow-y: visible;
+        size: auto;
+        height: auto;
+        font-size: 13px;
+    }
+    body { 
+        margin: 0;
+        size: auto;
+        height: auto;
+        overflow-y: visible;
+    }
+    #print-zone {
+        background-color: white;
+        width: 100%;
+        display: block;
+        padding: 20px 28px;
+        font-size: 14px;
+        line-height: 18px;
+        height: auto;
+        size: auto;
+        overflow-y: visible;
+    }
+    .ant-modal-footer, .ant-modal-header, .ant-modal-close {
+        @apply hidden;
+    }
+    .checkbox {
+        @apply w-[18px] h-[18px] border inline-block;
+    }
+
+    /* This is what simulates a checkmark icon */
+    .checkbox.checked:after {
+        content: '';
+        @apply block w-[4px] h-[7px] relative top-[3px] left-[5px] border;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+    }
+
+    // .ant-table-bordered .ant-table-thead > tr > th {
+    //     border: 1px solid #e8e8e8;
+    //     border-right: 0px !important;
+    //     &:first-child {
+    //         border-top: 0px !important;
+    //         border-left: 0px !important;
+    //     }
+    // }
+}
+
+// Full Calendar
+.fc {
+    .fc-toolbar {
+        &-title {
+            @apply text-prim-100 font-semibold uppercase text-xl #{!important};
+        }
+        button {
+            @apply bg-blue-100 border-blue-100 #{!important};
+        }
+    }
+    .fc-daygrid.fc-dayGridMonth-view {
+        @apply overflow-x-auto;
+        &::-webkit-scrollbar-track {
+            border-radius: 10px;
+            background-color: transparent;
+        }
+        
+        &::-webkit-scrollbar {
+            width: 6px;
+            height: 3px;
+            background-color: transparent;
+        }
+        
+        &::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background-color: #CCCECC;
+        }
+        .fc-scrollgrid {
+            min-width: 1100px !important;
+        } 
+    }
+}
+
+.translate-x-transition {
+    &-enter-active, &-leave-active {
+        transition: all .5s;
+    }
+
+    &-enter, &-leave-active, &-enter-from, &-leave-to {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    &-move {
+        transition: all .5s;
+    }
+
+    &-leave-active {
+        position: absolute;
+    }
+}

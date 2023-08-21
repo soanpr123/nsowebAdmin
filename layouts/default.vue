@@ -1,0 +1,55 @@
+<template>
+    <div class="flex justify-between bg-[#f8f8f8] min-h-screen">
+        <div class="hidden md:block">
+            <TheSidebar />
+        </div>
+        <div class="flex-grow flex flex-col h-screen overflow-x-hidden">
+            <TheHeader />
+            <div class="flex-grow overflow-y-auto max-h-screen custom-scroll">
+                <nuxt class="bg-white shadow-light p-4 m-3 md:m-6 overflow-x-hidden" />
+            </div>
+            <TheFooter />
+        </div>
+    </div>
+</template>
+
+<script>
+    import TheSidebar from '@/components/layout/TheSidebar.vue';
+    import TheHeader from '@/components/layout/TheHeader.vue';
+    import TheFooter from '@/components/layout/TheFooter.vue';
+
+    export default {
+        components: {
+            TheSidebar,
+            TheHeader,
+            TheFooter,
+        },
+
+        watch: {
+            '$route.path': {
+                handler() {
+                    this.$store.commit('SET_AUTO_FETCH', !this.autoFetch);
+                },
+            },
+        },
+
+        mounted() {
+            this.$store.commit('SET_IS_MOBILE', window.innerWidth < 768);
+            document.addEventListener('visibilitychange', this.onVisibilitychange);
+        },
+
+        destroyed() {
+            this.$el.removeEventListener('click', this.onVisibilitychange);
+        },
+
+        methods: {
+            onVisibilitychange() {
+                if (document.visibilityState === 'visible') {
+                    //
+                }
+
+                //
+            },
+        },
+    };
+</script>
